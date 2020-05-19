@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+    color: #000000;
+}
+.bg-orange{
+    background-color: white;;
+}
+
+.font-color-black{
+    color: black;
+}
+
+#titulo{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 100px;
+    color: #B44418;
+    text-shadow: 0.1em 0.1em 0.3em black;
+    font-weight: bold;
+}
+#bemvindo{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 70px;
+    color: #B44418;
+    font-weight: bold;
+    line-height: 90px;
+}
+
+#subTitulo{
+    color: #F1B42F;
+    font-size: 35px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-shadow: 0.1em 0.1em 0.3em black;
+}
+
+.header-site{
+    background-image: url("../../img/pizza1.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 370px 0;
+    color: white;
+}
+#img-familia-pizza{
+    background-image: url("../../img/mao-pizza.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.section-white{
+    background-image: url("../../img/fundo_gis.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.btn-black-orange{
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: #0f0f0f;
+    color: white;
+}
+
+.btn-black-orange:hover{
+    background-color: #ff670b;
+    transition: 0.3s;
+}
+
+
+#img-pizza-escuro{
+    background-image: url("../../img/pizza-escuro.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Josefin Sans', sans-serif;
+}
+#horario{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 90px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    #bemvindo {
+        font-size: 60px;
+    }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    #bemvindo {
+        font-size: 44px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    #bemvindo {
+        font-size: 40px;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    #bemvindo {
+        font-size: 80px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    #bemvindo {
+        font-size: 20px;
+    }
+}
