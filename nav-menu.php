@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light bg-orange ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Alternar de navegação">
         <span class="navbar-toggler-icon"></span>
     </button>

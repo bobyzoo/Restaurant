@@ -6,11 +6,17 @@ body{
     color: #000000;
 }
 .bg-orange{
-    background-color: white;;
+    background-color: #d5d5d5;;
 }
 
 .font-color-black{
     color: black;
+}
+.font-family-berkshire{
+    font-family: "Berkshire Swash", cursive;
+}
+.font-family-josefins{
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #titulo{
@@ -20,19 +26,19 @@ body{
     text-shadow: 0.1em 0.1em 0.3em black;
     font-weight: bold;
 }
-#bemvindo{
-    font-family: 'Berkshire Swash', cursive;
-    font-size: 70px;
-    color: #B44418;
-    font-weight: bold;
-    line-height: 90px;
-}
 
 #subTitulo{
     color: #F1B42F;
     font-size: 35px;
     font-family: 'Josefin Sans', sans-serif;
     text-shadow: 0.1em 0.1em 0.3em black;
+}
+#bemvindo{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 70px;
+    color: #B44418;
+    font-weight: bold;
+    line-height: 90px;
 }
 
 .header-site{
@@ -69,16 +75,12 @@ body{
 }
 
 .btn-black-orange:hover{
-    background-color: #ff670b;
+    background-color: #B44418;
     transition: 0.3s;
 }
 
 
 #img-pizza-escuro{
-    background-image: url("../../img/pizza-escuro.jpg");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
     color: white;
     font-size: 16px;
     font-weight: normal;
@@ -87,28 +89,116 @@ body{
 #horario{
     font-family: 'Berkshire Swash', cursive;
     font-size: 50px;
+    background-size:100%;
     font-weight: normal;
     line-height: 90px;
 }
-
-
-@media only screen and (max-width: 1200px) {
+.cardapi-min{
+    background-color: #FFFAF2;
+}
+.nosso-cardapio{
+    color: #B44418;
+    font-size: 50px;
+}
+.ingredientes-qualidade{
+    font-size: 30px;
+    font-weight: bold;
+}
+/**************/
+@media only screen and (min-width: 1200px) {
     #bemvindo {
         font-size: 60px;
+    }
+    #img-familia-pizza{
+        display: block;
+    }
+
+}
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
+    #bemvindo {
+        font-size: 60px;
+    }
+    #img-familia-pizza{
+        display: none;
+    }
+    #img-pizza-escuro{
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    #horario{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 70px;
+        background-size:100%;
+        font-weight: normal;
+        line-height: 90px;
     }
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     #bemvindo {
-        font-size: 44px;
+        font-size: 80px;
     }
+    #img-familia-pizza{
+        display: none;
+    }
+    .div-bemvindo{
+        text-align: center;
+        margin: 50px 0;
+    }
+    #img-pizza-escuro{
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    #horario{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 70px;
+        background-size:100%;
+        font-weight: normal;
+        line-height: 90px;
+    }
+
 }
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
     #bemvindo {
         font-size: 40px;
+    }
+    .div-bemvindo{
+        text-align: center;
+        margin: 50px 0;
+    }
+    #img-pizza-escuro{
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    #horario{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 70px;
+        background-size:100%;
+        font-weight: normal;
+        line-height: 90px;
+    }
+    #titulo{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 80px;
+        color: #B44418;
+        text-shadow: 0.1em 0.1em 0.3em black;
+        font-weight: bold;
+    }
+
+    #subTitulo{
+        color: #F1B42F;
+        font-size: 35px;
+        font-family: 'Josefin Sans', sans-serif;
+        text-shadow: 0.1em 0.1em 0.3em black;
     }
 }
 
@@ -117,11 +207,62 @@ body{
     #bemvindo {
         font-size: 80px;
     }
+    .div-bemvindo{
+        text-align: center;
+        margin: 50px 0;
+    }
+    #titulo{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 60px;
+        color: #B44418;
+        text-shadow: 0.1em 0.1em 0.3em black;
+        font-weight: bold;
+    }
+
+    #subTitulo{
+        color: #F1B42F;
+        font-size: 35px;
+        font-family: 'Josefin Sans', sans-serif;
+        text-shadow: 0.1em 0.1em 0.3em black;
+    }
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
     #bemvindo {
-        font-size: 20px;
+        font-size: 50px;
     }
+    .div-bemvindo{
+        text-align: center;
+        margin: 50px 0;
+    }
+    #img-pizza-escuro{
+        color: white;
+        font-size: 12px;
+        font-weight: normal;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    #horario{
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 50px;
+        background-size:100%;
+        font-weight: normal;
+        line-height: 90px;
+    }
+    #titulo{
+
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 40px;
+        color: #B44418;
+        text-shadow: 0.1em 0.1em 0.3em black;
+        font-weight: bold;
+    }
+
+    #subTitulo{
+        color: #F1B42F;
+        font-size: 20px;
+        font-family: 'Josefin Sans', sans-serif;
+        text-shadow: 0.1em 0.1em 0.3em black;
+    }
+
 }
