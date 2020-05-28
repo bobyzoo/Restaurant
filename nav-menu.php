@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-orange ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Alternar de navegação">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,7 @@
                 <a class="nav-link" href="#">Quem Somos</a>
             </li>
             <li class="nav-item text-uppercase">
-                <a class="nav-link" href="#">Cárdapio</a>
+                <a class="nav-link" href="#">Cardápio</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Suspenso</a>
