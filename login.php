@@ -14,7 +14,7 @@
             Senha</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
         <div class="mt-3">
-        <button class="btn btn-lg btn-warning btn " type="submit">Cadastrar-se</button>
+        <button class="btn btn-lg btn-warning btn " type="button" href="cadastrar.php"><a href="cadastrar.php" style="text-decoration: none; color: white">Cadastrar-se</a></button>
         <button class="btn btn-lg btn-primary  " type="submit">Entrar</button>
         </div>
     </form>
