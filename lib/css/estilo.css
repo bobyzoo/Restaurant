@@ -67,7 +67,17 @@ body{
     margin: 0 auto;
 }
 
-/**************/
+
+/*********LOGIN************/
+
+.icon-pizza{
+color: #e4521a;
+}
+
+
+
+
+/****RESPONSIVIDADE**********/
 @media only screen and (min-width: 1200px) {
 
 
