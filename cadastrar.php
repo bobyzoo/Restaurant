@@ -1,6 +1,6 @@
 <?php require_once "header.php"; ?>
 <style>
-    body{
+    body {
         background-color: #EBE4C4;
     }
 </style>
@@ -77,9 +77,8 @@
                         Please enter your shipping address.
                     </div>
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar
-                </button>
-            </form>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
+            </form
         </div>
 
     </div>
@@ -106,6 +105,9 @@
                 var data = data.split(';');
                 if (data[0] === '1') {
                     popover_notice('Cadastro confirmado', 'success', 'topright');
+                    setTimeout(function () {
+                        window.location.href = "login.php";
+                    }, 3000);
                 } else {
                     popover_notice('Erro ao cadastrar', 'danger', 'topright');
                 }
@@ -122,22 +124,6 @@
         }
     }
 
-    // function setBoxSuccess(dvID, texto, dropDown, resetForm){
-    //
-    //     $("#" + dvID).html("<div class='alert alert-success fade in' id='boxSuccess'><i class='fa-fw fa fa-check'></i><strong>+'Sucesso'+</strong> " + texto + '</div>');
-    //
-    //     if (dropDown){
-    //         $("#" + dvID).slideDown("fast");
-    //     }
-    //
-    //     setTimeout(function(){
-    //         $("#" + dvID).slideUp("fast");
-    //     }, 5000);
-    //
-    //     if(resetForm != ""){
-    //         limpaFormulario(resetForm);
-    //     }
-    // }
 
 </script>
 </body>

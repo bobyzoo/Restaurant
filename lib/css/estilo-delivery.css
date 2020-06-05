@@ -1,0 +1,25 @@
+body{
+    background-color: #EBE4C4;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.itens{
+    font-size: 30px;
+}
+
+.cap{
+    font-size: 14px;
+}
+.btn-pizza:hover {
+    background-color: #8b8472;
+    border-color: #dae0e5;
+}
+.btn-pizza:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+@media only screen and (min-width: 768px){
+    .cap{
+        font-size: 20px;
+    }
+}

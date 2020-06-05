@@ -1,3 +1,6 @@
+<?php require_once "lib/php/personalize-functions.php";
+session_start();
+?>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
@@ -25,6 +28,7 @@
     <title>
         Restaurant
     </title>
+
 </head>
 <body>
 <?php require_once "nav-menu.php";
