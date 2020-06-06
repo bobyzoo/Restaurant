@@ -5,7 +5,9 @@ foreach ($_POST as $key => $value) {
     $post->$key = $value;
 }
 
-
-array_push($_SESSION['carrinho'],$post);
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = array();
+}
+array_push($_SESSION['carrinho'], $post);
 
 echo '1;';

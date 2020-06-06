@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="address">Endereço</label>
+                    <label for="endereco">Endereço</label>
                     <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua x"
                            required="">
                     <div class="invalid-feedback">
@@ -82,7 +82,7 @@
         </div>
 
     </div>
-    <footer class="my-5 pt-5 text-dark text-center text-small">
+    <footer class="my-5 pt-5 text-dark text-center text-small col-12">
         <p class="mb-1 ">© 2017-2018 Nome da empresa</p>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Privacidade</a></li>

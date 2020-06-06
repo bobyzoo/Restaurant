@@ -8,6 +8,9 @@ body{
 .bg-orange{
     background-color: #d5d5d5;;
 }
+.color-yellow{
+    color: #F1B42F;
+}
 
 .font-color-black{
     color: black;
@@ -26,7 +29,9 @@ body{
     text-shadow: 0.1em 0.1em 0.3em black;
     font-weight: bold;
 }
-
+.background-color-orange{
+    background-color: #B44418;
+}
 .subTitulo{
     color: #F1B42F;
     font-size: 35px;
