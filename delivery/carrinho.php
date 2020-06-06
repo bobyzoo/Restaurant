@@ -57,12 +57,14 @@ $_SESSION['carrinho'][7] = $_SESSION['carrinho'][0];
             <div class="row px-3 pt-3">
                 <div class="col-8 col-sm-5 px-0">
                     <div class="font-weight-bold">Formas de pagamento</div>
-                    <div class="text-muted font-weight-light">Crédito Mastercard</div>
+                    <div class="text-muted font-weight-light" id="cartao-atual"></div>
                 </div>
                 <div class="col-4 col-sm-7 px-0 text-right div-trocar">
                     <div style="margin-top: 10px">
-                        <i class="fab fa-cc-mastercard text-primary"></i>
-                        <div class="text-danger btn font-weight-light d-inline-block btn-carrinho-white">Trocar</div>
+                        <i class="fab fa-cc-mastercard text-primary d-none" id="bandeira-cartao"></i>
+                        <div class="text-danger btn font-weight-light d-inline-block btn-carrinho-white"
+                             id="btn-add-cartao">Adicionar
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,6 +126,7 @@ $_SESSION['carrinho'][7] = $_SESSION['carrinho'][0];
 <script src="../lib/jQuery/jquery.mask.min.js"></script>
 <script>
 
+    //    MASCARA CPF - CNPJ
     $("#cpf_nota").keydown(function () {
         try {
             $("#cpf_nota").unmask();
@@ -163,25 +166,27 @@ $_SESSION['carrinho'][7] = $_SESSION['carrinho'][0];
 
 
     $("#salvarCpf").click(function () {
-        if (verificaCampoCpfCnpj()) {
-            if ($("#checkCpf").is(':checked')) {
-                $("#cpfcnpj_atual").html("");
-                $("#trocarCpf").html("Adicionar");
-                $("#cpf_cnpj_nota").val("");
-            } else {
+        if ($("#checkCpf").is(':checked')) {
+            $("#cpfcnpj_atual").html("");
+            $("#trocarCpf").html("Adicionar");
+            $("#cpf_cnpj_nota").val("");
+        } else {
+            if (verificaCampoCpfCnpj()) {
                 $("#cpfcnpj_atual").html($("#cpf_nota").val());
                 $("#trocarCpf").html("Trocar");
                 $("#cpf_cnpj_nota").val($("#cpf_nota").val());
+            } else {
+                return false
             }
-
-            defineMovimento("div-cpf", "fadeOutRight");
-            defineMovimento("FrmCarrinho", "fadeInLeft");
-            animaDiv();
-            setTimeout(function () {
-                habilita_div_id("FrmCarrinho");
-                some_div_id("div-cpf");
-            }, 500);
         }
+
+        defineMovimento("div-cpf", "fadeOutRight");
+        defineMovimento("FrmCarrinho", "fadeInLeft");
+        animaDiv();
+        setTimeout(function () {
+            habilita_div_id("FrmCarrinho");
+            some_div_id("div-cpf");
+        }, 500);
     });
 
     $("#cpf_nota").focusout(function () {
@@ -190,6 +195,9 @@ $_SESSION['carrinho'][7] = $_SESSION['carrinho'][0];
 
     function verificaCampoCpfCnpj() {
         let cpfcnpj = $("#cpf_nota").val();
+        if (cpfcnpj.length === 0) {
+            return false
+        }
         if (cpfcnpj.length > 14) {
             if (!validarCNPJ(cpfcnpj)) {
                 habilita_div_id("erro-cpf");
