@@ -28,7 +28,7 @@
 
     </div>
     <div class="position-absolute" style="right: 30px;">
-        <a href="carrinho.php"><i class="fas fa-shopping-cart text-light" style="font-size: 25px"></i></a>
+        <a <?= isset($_SESSION['carrinho']) ? "href='carrinho.php'" : '' ?>"><i class="fas fa-shopping-cart text-light" style="font-size: 25px"></i></a>
         <span class="badge badge-pill background-color-orange text-white font-weight-light notification"><?= isset($_SESSION['carrinho']) ? count($_SESSION['carrinho']) : 0 ?></span>
     </div>
 </nav>
