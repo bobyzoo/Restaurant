@@ -1,4 +1,5 @@
-<?php require_once __DIR__ . "/header.php" ?>
+<?php require_once __DIR__ . "/header.php";
+?>
 <div class="container mt-5">
     <div class="font-weight-bold itens">
         Quantas fatias ?
@@ -40,6 +41,14 @@
         </div>
     </div>
 
+
+    <!--    Qual borda-->
+    <div class="container">
+        <div id="sabores-borda" class="mb-5">
+        </div>
+    </div>
+
+
     <!--    Observação-->
     <div class="container">
         <div id="obs" class="mb-5 form-group d-none">
@@ -50,8 +59,11 @@
     </div>
 
     <input type="hidden" value="" id="numeroFatias" name="numFatias">
+    <input type="hidden" value="" id="valorTotal" name="valorTotal">
     <div class="container mb-5">
-        <button class="btn btn-warning text-white rounded rounded-5 border-light float-right d-none" type="submit"
+        <div class="float-left d-none" id="valor-pizza"><h4>Valor da pizza: R$ <span id="valor">00,00</span></h4></div>
+        <button class="btn btn-warning text-white rounded rounded-5 border-light float-right d-none mb-5 mt-5"
+                type="submit"
                 id="btn-carrinho">
             <i class="fas fa-plus-circle"></i> Adicionar ao carrinho
         </button>
@@ -62,21 +74,46 @@
 
     function escolhePizza(id, pedacos) {
         $('#conteudo-sabores').remove();
-        let html = "<div id='conteudo-sabores'><div class='container mt-5' id='conteudo-sabores'><div class='font-weight-bold itens'>Quais sabores? </div></div>";
-        html += "<div class='container form-group'><label class='col-11'><select name='sabor0' class='form-control select-sabores' required='required'><option value=''>...</option></select></label></div>";
+        $('#conteudo-sabores-borda').remove();
+        $('#valor').html('00,00');
+        let html = "<div id='conteudo-sabores'><div class='container mt-5' id=''><div class='font-weight-bold itens'>Quais sabores? </div></div>";
+        html += "<div class='container form-group'><label class='col-11'><select onchange='atualizaValorTotal(" + pedacos + ")' name='sabor0' id='sabor0' class='form-control select-sabores' required='required'><option value=''>...</option></select></label></div>";
         for (let c = 1; c < id; c++) {
-            html += "<div class='container form-group'><label class='col-11 '><select name='sabor"+c+"' class='form-control select-sabores'><option value=''>...</option></select></label></div>";
+            html += "<div class='container form-group'><label class='col-11 '><select onchange='atualizaValorTotal(" + pedacos + ")'  name='sabor" + c + "' id='sabor" + c + "'  class='form-control select-sabores'><option value=''>...</option></select></label></div>";
         }
+
+
         $("#sabores").append(html);
-        getSabores();
+        $("#sabores-borda").append("<div id='conteudo-sabores-borda'><div class='container mt-5' id='conteudo-sabores-borda'><div class='font-weight-bold itens'>Qual sabor da borda?</div></div><div class='container form-group'><label class='col-11'><select onchange='atualizaValorTotal(" + pedacos + ")'  name='sabor_borda' class='form-control' id='select-sabores-borda' required='required'><option value=''>...</option></select></label></div>");
+
+        getSabores(pedacos);
+        getSaboresBordas();
         habilitaBtn();
         habilitaObservacoes();
         $("#numeroFatias").val(pedacos);
     }
 
-    function getSabores() {
+    function getSaboresBordas() {
+        $.ajax({
+            url: "ajax/ajax.getSaboresBorda.php",
+            type: "POST",
+            beforeSend: function () {
+                $("#select-sabores-borda").attr("disabled", "disabled");
+                $("#select-sabores-borda").html("<option value=''>carregando_aguarde</option>");
+
+            },
+            success: function (data) {
+                $("#select-sabores-borda").html(data);
+                $("#select-sabores-borda").removeAttr("disabled", "disabled");
+
+            }
+        });
+    }
+
+    function getSabores(pedaco) {
         $.ajax({
             url: "ajax/ajax.getSabores.php",
+            data: {pedaco},
             type: "POST",
             beforeSend: function () {
                 $(".select-sabores").attr("disabled", "disabled");
@@ -91,6 +128,24 @@
         });
     }
 
+
+    function atualizaValorTotal(pedacos) {
+        let valor_borda = $("#select-sabores-borda").val();
+        let valor_sabor1 = $("#sabor0").val();
+        let valor_sabor2 = $("#sabor1").val();
+        let valor_sabor3 = $("#sabor2").val();
+        $.ajax({
+            url: "ajax/ajax.setValorTotalItem.php",
+            data: {valor_borda, valor_sabor1, valor_sabor2, valor_sabor3, pedacos},
+            type: "POST",
+            success: function (data) {
+                $("#valorTotal").val(data)
+                $("#valor").html(data);
+            }
+        });
+    }
+
+
     function habilitaObservacoes() {
         $("#obs").addClass("d-block");
         $("#obs").removeClass("d-none");
@@ -98,13 +153,15 @@
 
     function habilitaBtn() {
         $("#btn-carrinho").addClass("d-block");
+        $("#valor-pizza").addClass("d-block");
+        $("#valor-pizza").removeClass("d-none");
         $("#btn-carrinho").removeClass("d-none");
     }
 
     $("#FrmItemPedido").submit(function (e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
-        var form = $(this);
-        var url = form.attr('action');
+        let form = $(this);
+        let url = form.attr('action');
         $.ajax({
             type: "POST",
             url: url,

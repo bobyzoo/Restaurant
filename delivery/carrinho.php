@@ -1,9 +1,8 @@
 <?php require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/../class/sabores.php";
 //echo '<pre>';
-//print_r($_SESSION['carrinho']);
+print_r($_SESSION['carrinho']);
 //echo '</pre>';
-//$_SESSION['carrinho'][7] = $_SESSION['carrinho'][8];
 ?>
 <div class="container mt-5 ">
     <form method='post' action='ajax/ajax.setItemPedido.php' class='mb-5 needs-validation nota fadeOutLeft wow'
@@ -13,9 +12,8 @@ require_once __DIR__ . "/../class/sabores.php";
             $subTotal = 0;
             $html = '';
             foreach ($_SESSION['carrinho'] as $item) {
-                $valor = 0.00;
-                $html .= "<div class='container px-3 mb-3 pb-2 borda-cinza'><div class='float-right font-weight-bold'><h4>R$ " . $valor . "<div class='d-inline-block ml-3 btn btn-carrinho-white '><i class='text-danger fas fa-ellipsis-v'></i></div></div></h4><div class='font-weight-bold' style='color: #343A40'><p>Pizza de " . $item->numFatias . " fatias</p></div><div class='font-weight-bold'>Sabores:</div>";
-                $subTotal += $valor;
+                $html .= "<div class='container px-3 mb-3 pb-2 borda-cinza'><div class='float-right font-weight-bold'><h4>R$ " . $item->valorTotal . "<div class='d-inline-block ml-3 btn btn-carrinho-white '><i class='text-danger fas fa-ellipsis-v'></i></div></div></h4><div class='font-weight-bold' style='color: #343A40'><p>Pizza de " . $item->numFatias . " fatias</p></div><div class='font-weight-bold'>Sabores:</div>";
+                $subTotal += $item->valorTotal;
                 for ($c = 0; $c < 3; $c++) {
                     $sabor = 'sabor' . $c;
                     if (isset($item->$sabor) and $item->$sabor != null) {
@@ -26,7 +24,9 @@ require_once __DIR__ . "/../class/sabores.php";
                     $html .= '<div class="font-weight-bold">Observações:</div>';
                     $html .= '<div><li style="list-style: none"> - ' . $item->observacoes . '</li></div>';
                 }
-                $html .= '</div>';
+                $html .= "<div class='font-weight-bold'>Sabor da borda:</div><div class='float-right mr-2'>R$ ".number_format(sabores::getValorBordaById($item->sabor_borda), 2, ",", ".")."</div><div><li style='list-style: none'> - " . sabores::getSaborBorda($item->sabor_borda) . "</li></div></div>";
+                $html .= "";
+                $subTotal+=$item->valorTotal;
             }
             $desconto = 0;
             echo $html;
@@ -37,16 +37,16 @@ require_once __DIR__ . "/../class/sabores.php";
                 </button>
             </div>
             <div class="container px-3 mb-3 pb-2  borda-cinza">
-                <div class='float-right font-weight-bold'>R$ <?= $valor ?> </div>
+                <div class='float-right font-weight-bold'>R$ <?= $item->valorTotal ?> </div>
                 <div>SubTotal</div>
             </div>
             <div>
                 <div class="container px-3 mb-3 pb-2 ">
-                    <div class='float-right font-weight-bold text-muted'>- R$ <?= $subTotal ?> </div>
+                    <div class='float-right font-weight-bold text-muted'>- R$ <?= $desconto ?> </div>
                     <div class="pt-1">Cumpom</div>
-                    <div class='float-right font-weight-bold text-muted'>R$ <?= $desconto ?> </div>
+                    <div class='float-right font-weight-bold text-muted'>R$ <?= 0 ?> </div>
                     <div class="pt-1 mb-3">Taxa de entrega</div>
-                    <div class='float-right font-weight-bold'><h3>R$ <?= $subTotal - $desconto ?> </h3></div>
+                    <div class='float-right font-weight-bold'><h3>R$ <?=number_format($subTotal - $desconto, 2, ",", ".")?> </h3></div>
                     <div class="font-weight-bold "><h3>Total</h3></div>
                 </div>
             </div>
@@ -298,7 +298,7 @@ require_once __DIR__ . "/../class/sabores.php";
         } else {
             let ano_campo = valor_campo[3] + valor_campo[4];
             let mes_campo = valor_campo[0] + valor_campo[1];
-            if ((parseInt(ano_campo) < parseInt(anoReduzino))  || mes_campo < mes) {
+            if ((parseInt(ano_campo) < parseInt(anoReduzino)) || mes_campo < mes) {
                 console.log('1erro');
                 habilita_div_id("erro-valCart")
 
